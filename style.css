@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(53, 152, 251) !important;
+}
+
+
+.container{
+    margin-top: 100px;
+    background-color: rgb(53, 152, 251) !important;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
