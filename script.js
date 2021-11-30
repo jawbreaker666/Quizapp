@@ -143,3 +143,13 @@ function resetAnswerButtons(){
 
     
 }
+
+
+function restartGame(){
+    document.getElementById('header-image').src = 'img/quizimage.jpg';
+    document.getElementById('question-body').style = ''; //questionbody wieder anzeigen
+    document.getElementById('end-screen').style = 'display: none'; //Endscreen ausblenden
+    rightQuestions = 0;
+    currentQuestion = 0;
+    init();
+}
