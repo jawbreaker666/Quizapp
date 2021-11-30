@@ -43,6 +43,8 @@ let questions = [{ //Alle Fragen in einem Array
 
 ];
 
+let rightQuestions = 0;
+
 
 let currentQuestion = 0; //Frage 1 = Stufe 0
 
@@ -62,9 +64,21 @@ function showQuestion(){
 
         document.getElementById('end-screen').style = '';
         document.getElementById('question-body').style = 'display: none';
+
+        document.getElementById('amountOfQuestions').innerHTML = questions.length;
+
+        document.getElementById('amountOf-right-Questions').innerHTML = rightQuestions;
+        document.getElementById('header-image').src = 'img/pokal.png';
         }
 
-    else{
+
+    else{  //show question
+
+    let percent = (currentQuestion + 1) / questions.length;
+    percent = Math.round(percent * 100);
+    document.getElementById('progress-bar').innerHTML = `${percent}%`;
+    document.getElementById('progress-bar').style = `width: ${percent}%;`;
+    console.log('Fortschritt', percent);
     
 
     let question = questions[currentQuestion]; //Fragen anzueigen lassen
@@ -85,19 +99,21 @@ function answer(selection){ // Richtige Antwort
     console.log('Selected answer is', selection);
     let selectedQuestionNumber = selection.slice(-1);
     console.log('selectedQuestionNumber is', selectedQuestionNumber);
-    console.log('Current question is', question['right_answer']);
+    console.log('Current question is', question['right_answer']); //Richtige Frage beantwortet
 
     let idOfRightAnswer = `answer_${question['right_answer']}`;
 
     if(selectedQuestionNumber == question['right_answer'] ){  // Richtige/Falsche Antwort farbig unterlegt
       
         document.getElementById(selection).classList.add('bg-success');
+        rightQuestions++;
     }
 
     else{                   
         console.log('Falsche Antwort!');
         document.getElementById(selection).classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).classList.add('bg-success');
+
     }
 
     document.getElementById('next-button').disabled = false;  // Button freigeben
