@@ -41,17 +41,8 @@ let questions = [{ //Alle Fragen in einem Array
 },
 
 
-{
-
-    "question": "Wie definiert man in JS eine Variable?",
-    "answer_1": "let 100 = rate;",
-    "answer_2": "100 = let rate;",
-    "answer_3": "rate = 100;",
-    "answer_4": "let rate = 100;",
-    "right_answer": 4
-},
-
 ];
+
 
 let currentQuestion = 0; //Frage 1 = Stufe 0
 
@@ -61,17 +52,32 @@ function init(){
 
     showQuestion();
 
+
 }
 
 function showQuestion(){
+
+    if(currentQuestion >= questions.length){
+        //Todo: Show End Sreen
+
+        document.getElementById('end-screen').style = '';
+        document.getElementById('question-body').style = 'display: none';
+        }
+
+    else{
+    
+
     let question = questions[currentQuestion]; //Fragen anzueigen lassen
     
+    document.getElementById('question-number').innerHTML = currentQuestion + 1;
     document.getElementById('questiontext').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
-}
+    
+    
+}}
 
 function answer(selection){ // Richtige Antwort
 
@@ -101,11 +107,23 @@ function answer(selection){ // Richtige Antwort
 
 function nextQuestion(){
     currentQuestion++; //z.B von 0 auf 1
+    document.getElementById('next-button').disabled = true; //Button disabled
+
+    resetAnswerButtons();
     showQuestion();
 
-    document.getElementById('next-button').disabled = true;
+}
 
-    document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer_1').parentNode.classList.remove('bg-success');
+function resetAnswerButtons(){
+    
+    document.getElementById('answer_1').classList.remove('bg-danger');
+    document.getElementById('answer_1').classList.remove('bg-success');
+    document.getElementById('answer_2').classList.remove('bg-danger');
+    document.getElementById('answer_2').classList.remove('bg-success');
+    document.getElementById('answer_3').classList.remove('bg-danger');
+    document.getElementById('answer_3').classList.remove('bg-success');
+    document.getElementById('answer_4').classList.remove('bg-danger');
+    document.getElementById('answer_4').classList.remove('bg-success');
 
+    
 }
