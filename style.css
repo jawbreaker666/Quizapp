@@ -13,6 +13,7 @@ body{
 
 .quizcard{
     width: 30rem;
+    border-radius: 10px;
 }
 
 .question-footer{
@@ -26,4 +27,9 @@ body{
 .quiz-answer-card :hover{
     cursor: pointer;
     background-color: rgb(238, 238, 238);
+   
+}
+
+.bg-success, .bg-danger{
+    color: white;
 }

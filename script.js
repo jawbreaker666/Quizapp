@@ -1,4 +1,4 @@
-let questions = [{
+let questions = [{ //Alle Fragen in einem Array
 
     "question": "An welcher Sprache orientieren sich die meisten Programmiersprachen?",
     "answer_1": "englisch",
@@ -53,7 +53,7 @@ let questions = [{
 
 ];
 
-let currentQuestion = 0;
+let currentQuestion = 0; //Frage 1 = Stufe 0
 
 
 function init(){
@@ -64,7 +64,7 @@ function init(){
 }
 
 function showQuestion(){
-    let question = questions[currentQuestion];
+    let question = questions[currentQuestion]; //Fragen anzueigen lassen
     
     document.getElementById('questiontext').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
@@ -73,6 +73,39 @@ function showQuestion(){
     document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
-function answer(selection){
+function answer(selection){ // Richtige Antwort
+
+    let question = questions[currentQuestion];
+    console.log('Selected answer is', selection);
+    let selectedQuestionNumber = selection.slice(-1);
+    console.log('selectedQuestionNumber is', selectedQuestionNumber);
+    console.log('Current question is', question['right_answer']);
+
+    let idOfRightAnswer = `answer_${question['right_answer']}`;
+
+    if(selectedQuestionNumber == question['right_answer'] ){  // Richtige/Falsche Antwort farbig unterlegt
+      
+        document.getElementById(selection).classList.add('bg-success');
+    }
+
+    else{                   
+        console.log('Falsche Antwort!');
+        document.getElementById(selection).classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).classList.add('bg-success');
+    }
+
+    document.getElementById('next-button').disabled = false;  // Button freigeben
+
+}
+
+
+function nextQuestion(){
+    currentQuestion++; //z.B von 0 auf 1
+    showQuestion();
+
+    document.getElementById('next-button').disabled = true;
+
+    document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_1').parentNode.classList.remove('bg-success');
 
 }
