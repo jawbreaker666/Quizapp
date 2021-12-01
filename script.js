@@ -44,9 +44,11 @@ let questions = [{ //Alle Fragen in einem Array
 ];
 
 let rightQuestions = 0;
-
-
 let currentQuestion = 0; //Frage 1 = Stufe 0
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
+let AUDIO_FAIL = new Audio('audio/fail.mp3');
+
+
 
 
 function init(){
@@ -106,6 +108,7 @@ function answer(selection){ // Richtige Antwort
     if(selectedQuestionNumber == question['right_answer'] ){  // Richtige/Falsche Antwort farbig unterlegt
       
         document.getElementById(selection).classList.add('bg-success');
+        AUDIO_SUCCESS.play();
         rightQuestions++;
     }
 
@@ -113,6 +116,8 @@ function answer(selection){ // Richtige Antwort
         console.log('Falsche Antwort!');
         document.getElementById(selection).classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).classList.add('bg-success');
+        AUDIO_FAIL.play();
+        
 
     }
 
