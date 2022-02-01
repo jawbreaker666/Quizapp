@@ -9,6 +9,7 @@ body{
     background-color: rgb(53, 152, 251) !important;
     display: flex;
     justify-content: center;
+    width: 0%;
 }
 
 .quizcard{
@@ -52,3 +53,24 @@ body{
     justify-content: center;
     margin-top: 24px;
 }  
+
+
+@media(max-width: 1000px) {
+
+    .container-fluid{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 0%;
+       
+
+    }
+
+    .navbar-brand mb-0 h1{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+}
