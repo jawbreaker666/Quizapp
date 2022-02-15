@@ -122,6 +122,8 @@ function answer(selection){ // Richtige Antwort
     let selectedQuestionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer_${question['right_answer']}`;
 
+    //div absolute für das sperren weiterer klicks
+
     if(rightAnswerSelected(selectedQuestionNumber)){  // Richtige Frage beantwortet
       
         document.getElementById(selection).classList.add('bg-success');
@@ -139,6 +141,8 @@ function answer(selection){ // Richtige Antwort
     }
 
     document.getElementById('next-button').disabled = false;  // Button freigeben
+
+    //display none, entsperrung der klicks
 
 }
 

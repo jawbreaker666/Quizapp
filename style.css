@@ -54,6 +54,11 @@ body{
     margin-top: 24px;
 }  
 
+.no-click-container{
+    position: relative;
+}
+
+
 
 @media(max-width: 1000px) {
 
